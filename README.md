@@ -19,5 +19,5 @@ There are a few different flags that specify different modes of operation. For a
 - `--base64 (-b)`: outputs a base64 encoded woff fontpack
 
 Example:
-`python3 factory.py --base64 --prefix "im a bea" n rd` will generate a fontpack with both the ligatures `im a bean` and `im a beard`
+`python3 factory.py --base64 --prefix "im a bea" n rd` will generate a fontpack containing both the ligatures `im a bean` and `im a beard`
 
