@@ -8,7 +8,7 @@ This tool requires [FontForge](https://fontforge.org/en-US/) to create .woff pac
 
 ## Usage
 
-`python3 factory.py [flags] [ligature_1] [ligature_2] ... [ligature_n]`
+`python3 fontfactory.py [flags] [ligature_1] [ligature_2] ... [ligature_n]`
 
 There are a few different flags that specify different modes of operation. For a full list, use the `-h` flag.
 
@@ -19,5 +19,18 @@ There are a few different flags that specify different modes of operation. For a
 - `--base64 (-b)`: outputs a base64 encoded woff fontpack
 
 Example:
-`python3 factory.py --base64 --prefix "im a bea" n rd` will generate a fontpack `font.woff` containing both the ligatures `im a bean` and `im a beard`, as well as output a base64 encoded version.
+`python3 fontfactory.py --prefix "im a bea" n rd` will generate a fontpack `font.woff` containing both the ligatures `im a bean` and `im a beard`
+
+You can also use the program directly in a python application:
+```python
+import fontfactory as ff
+
+prefix = 'i like '
+ligs = ['cats', 'dogs']
+
+b64 = ff.make_base64_woff(prefix, ligs)
+
+print(b64)
+
+```
 

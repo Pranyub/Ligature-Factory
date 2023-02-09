@@ -12,7 +12,7 @@ FONT_NAME = 'hax'
 WIDTH = 10000
 UNITS_PER_EM = 1000
 
-def gen_ligature(prefix='', chrs=[]):
+def gen_ligature(prefix, chrs=[]):
     
     # all empty characters
     empty = [f"<glyph unicode='{html.escape(chr(c))}' horiz-adv-x='0' d='M1 0z'/>" for c in range(0x20, 0x7e)]
@@ -44,6 +44,15 @@ def make_woff(svg, filename):
     except:
         os.remove('tmp.svg')
         return False
+
+def make_b64_woff(prefix, chrs=[]):
+    svg = gen_ligature(prefix, chrs)
+    make_woff(svg, 'tmp.woff')
+    f = open('tmp.woff', 'rb')
+    out = base64.b64encode(f.read()).decode()
+    f.close()
+    os.remove('tmp.woff')
+    return out
 
 def main():
 
